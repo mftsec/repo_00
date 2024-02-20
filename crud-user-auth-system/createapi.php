@@ -1,6 +1,5 @@
 <?php
 
-
 include 'conn.php';
 
 
@@ -13,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $data['username'];
     $email = $data['email'];
     $password = $data['password'];
-
 
     
     $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";

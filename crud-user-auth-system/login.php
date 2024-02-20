@@ -3,11 +3,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="body-style2">
    
-   
-    <div class="container">
+
+    <div class="login-container">
         <form action="login.php" method="post" >
             <label for="username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" id="username" required>
@@ -18,8 +19,9 @@
             <br>
             <br>       
             <button type="submit">Login</button>
-            <label>
-            </label>
+            <br>
+            <br>
+            <p>you don't have an account yet <a href="register.php">register</a></p>
         </form>
     </div>
 
@@ -29,7 +31,7 @@
 
 <?php
 
-session_start();
+
 
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
@@ -49,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
     try {
         include 'conn.php';
-        $sql = "SELECT username,password FROM users WHERE username = ?";
+        $sql = "SELECT username,password,id FROM users WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s",$username);
         $stmt->execute();
@@ -61,10 +63,12 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         if ($user && password_verify($password, $user['password'])) {
             session_start();
             $_SESSION['username'] = $user['username'];
+            $_SESSION['user_id'] = $user['id'];
+
             header("Location: index.php");
-    
+            exit;
         } else {
-            echo "kullanıcı adı veya şifre hatalı";
+            echo "<script>alert('kullanıcı adı veya şifre hatalı')</script>";
         }
 
 

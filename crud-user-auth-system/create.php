@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Yeni Kullanıcı Oluştur</h2>
-    <form id="userForm">
+    <form id="userForm">  
         <label>Kullanıcı Adı: </label><br>
         <input type="text" id="username" name="username"><br>
         <label>Email: </label><br>

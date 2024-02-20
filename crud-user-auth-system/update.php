@@ -1,17 +1,15 @@
 <h2>Kullanıcıyı Düzenle</h2>
 <form id="updateForm">
-    ID: <input type="number" name="id" id="id"><br>
-    Kullanıcı Adı: <input type="text" name="username" id="username"><br>
-    E-posta: <input type="text" name="email" id="email"><br>
-    Şifre: <input type="password" name="password" id="password"><br>
-    <button type="button" onclick="updateForm()">güncelle</button>
+    Kullanıcı Adı:<br> <input type="text" name="username" id="username"><br>
+    E-posta: <br><input type="text" name="email" id="email"><br>
+    Şifre: <br><input type="password" name="password" id="password"><br>
+    <button type="button" onclick="updateForm()" style="background:#fff; width:100px; height:40px; margin-top:10px;">Güncelle</button>
 </form>
 
 
 <script>
     function updateForm() {
         var formdata = {
-            id: document.getElementById("id").value,
             username: document.getElementById("username").value,
             email: document.getElementById("email").value,
             password: document.getElementById("password").value
