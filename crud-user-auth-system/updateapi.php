@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'conn.php';
 
 
@@ -7,17 +8,22 @@ if ($conn->connect_error) {
 }
 
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
     $data = json_decode(file_get_contents("php://input"),true);
-    $id = $data['id'];
+    $id = $_SESSION['user_id'];
     $username = $data['username'];
     $email = $data['email'];
     $password = $data['password'];
 
+
     try {
+
+
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
-        $sql = "UPDATE users SET username='$username', email='$email', password='$password' WHERE id='$id'";
+        $sql = "UPDATE users SET username='$username', email='$email', password='$hashed_password' WHERE id='$id'";
         $stmt = $conn->prepare($sql);
      
       
