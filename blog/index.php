@@ -93,21 +93,15 @@ if (!isset($_SESSION['user_id'])) {
             overflow-y: auto;
         }
 
-        #yorumlar {
-            height: auto; /* Otomatik yükseklik */
-            max-height: 78vh; /* Maksimum yükseklik ayarı */
-            overflow-y: auto; /* Eğer içerik belirlenen yüksekliği aşarsa dikey kaydırma çubuğu göster */
-        }
-        #yorumlar {
-            word-wrap: break-word; /* Kelime kaydırma */
-        }
+        
+    </style>
 
 
 
         
 
-        /* Diğer CSS stilleri */
-    </style>
+    
+   
 </head>
 <body>
 
@@ -126,7 +120,8 @@ if (!isset($_SESSION['user_id'])) {
                     <li><a href="upload.php">file upload</a></li>
                     <li><a href="hakkimizda.php">Hakkımızda</a></li>
                     
-                    <li><a href="#">İletişim</a></li>
+                    <li><a href="posts.php">posts</a></li>
+                    <li><a href="fakeadmin.php">fakeadmin</a></li>
                     
                     <li>
                         <form action="logout.php" method="POST">
@@ -151,7 +146,8 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="center-column">
-            <div id="yorumlar"></div>
+            <?php include 'posts.php';?>
+            
         </div>
 
         <div class="right-column">
@@ -198,7 +194,7 @@ if (!isset($_SESSION['user_id'])) {
 
         }
 
-
+        
         fetch('getComments.php')
         .then(response => response.json())
         .then(data => {
@@ -208,6 +204,7 @@ if (!isset($_SESSION['user_id'])) {
                 yorumDiv.innerHTML = '<strong>[' + yorum.username + ']</strong>' + '<strong>' + yorum.title + '</strong>: ' + yorum.content;
                 yorumlarDiv.appendChild(yorumDiv); 
             })
+            
         })
         .catch(error => console.error('Yorumlar çekilirken hata oluştu:', error));
 
