@@ -9,6 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $data['email'];
     $password = $data['password'];
 
+   
+
+
     if (empty($username) || empty($email) || empty($password)) {
 
         echo "pls fill the all  fields";
