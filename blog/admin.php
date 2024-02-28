@@ -2,14 +2,16 @@
 
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+if ($_SESSION['user_id'] !== 1) {
     
-    header("Location: login.php");
+    http_response_code(403);
+    echo "permission denided";
+
+    exit;
     
 }
 
 ?>
-
 
 
 <html lang="en">

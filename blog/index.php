@@ -121,7 +121,7 @@ if (!isset($_SESSION['user_id'])) {
                     <li><a href="hakkimizda.php">Hakkımızda</a></li>
                     
                     <li><a href="posts.php">posts</a></li>
-                    <li><a href="fakeadmin.php">fakeadmin</a></li>
+                    
                     
                     <li>
                         <form action="logout.php" method="POST">
